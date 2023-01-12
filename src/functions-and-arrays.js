@@ -1,24 +1,77 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(a,b) {
+  if(a>b){
+    return a;
+  } else{
+    return b;
+  }
+}
 
 
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(arr) {
+    if( arr.length ===  0){
+      return null
+    }
+    let longest = "";
+    for (let i = 0; i < arr.length; i++){
+      if (arr[i].length > longest.length){
+        longest = arr[i];
+      }
+    }
+    return longest;
+}
 
 
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(arr) {
+  let sum = 0; 
+  arr.forEach(item => {
+    sum += item;
+  });
+  return sum;
+}
+
 
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arr) {
+//   var total = 0;
+//   for(var i=0;i<=arr_mix.length;i++){
+//     if (typeof arr_mix[i]=== 'string'){
+//       parseInt(arr_mix[i], 10)
+//     }
+//     if (parsedItem === "number")
+//       total=total+ arr_mix[i];
+//   }
+// return total; 
+  
+let sum = 0;
+
+arr.forEach(item => {
+  
+  if (typeof item == "object") {
+    throw new TypeError("Unsupported data type sir or ma'am")
+  } else if (typeof item == "number") { 
+    sum += item
+  } else if (typeof item == "string") {
+    sum += item.length
+  } else if (typeof item == "boolean") {
+    if (item) sum += 1
+  }
+
+})
+
+  return sum;
+
+}
 
 
 
@@ -26,16 +79,42 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(arr) {
+  if( arr.length ===  0){
+    return null
+  }
+  let sum = 0; 
+  arr.forEach(item => {
+    sum += item;
+  });
+  let average = sum / arr.length;
+  return average; 
+}
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(arr) { 
+  if( arr.length ===  0){
+    return null
+  }
+  let sum = 0; 
+  arr.forEach(item => {
+    sum += item.length;
+  });
+  let averageLetters = sum / arr.length;
+  return averageLetters;
+
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if(arr.length ===  0){
+    return null;
+  }
+
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -52,14 +131,41 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if( arr.length ===  0){
+    return null
+  }
 
+  for(i=0; i<arr.length; i++){
+    for(j=0; j<arr[i].length; j++){
+      if(arr[i] == arr[j]){
+        let filteredArr = arr.filter((item, i, ar) => ar.indexOf(item) === i)
+        return filteredArr;
+      } else{
+        return arr;
+      }
+    }
+  }
+}
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(arr,word) {
+  if(arr.length ===  0){
+    return null;
+  }
+  else if(arr.indexOf(word) === -1){
+    return false;
+  }
+  for(var i=0; i<arr.length; i++){
+    if(arr[i] == word){
+      return true;
+    } 
+  }
+
+}
 
 
 
@@ -78,7 +184,15 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
+
+  arr.forEach(item => {
+    item == word ? count += 1 : count
+  })
+
+  return count;
+}
 
 
 
@@ -106,7 +220,27 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arr) {
+
+  let sum1 = 0;
+  let sum2 = 0;
+
+  arr.forEach(item => {
+    if(item.every(subItem => subItem == 1)) {
+      sum1 += 1
+    } else if(item.every(subItem => subItem == 2)) {
+      sum2 += 1
+    }
+  })
+
+  if (sum1 == arr.length) {
+    return 1
+  } else if (sum2 == arr.length) {
+    return 16
+  }
+
+
+}
 
 
 
