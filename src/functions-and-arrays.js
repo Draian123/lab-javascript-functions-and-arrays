@@ -256,6 +256,37 @@ function greatestProduct(arr) {
 }
 
 
+function greatestProduct(matrix) {
+
+  let max = 0;
+  let product = 0;
+  let length = matrix.length;
+  
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < length; j++) {
+
+      //check for max product in a Row
+      if ((j-3) >= 0) {
+        product = matrix[i][j]*matrix[i][j-1]*matrix[i][j-2]*matrix[i][j-3];
+        if (max < product) max = product;
+      }
+
+      //check for max product in a Column
+      if ((i-3) >= 0) {
+        product = matrix[i][j]*matrix[i-1][j]*matrix[i-2][j]*matrix[i-3][j];
+        if (max < product) max = product;
+      }
+
+      //check for max product in a Diagonal
+      if ((i-3) >= 0 && (j-3) >= 0)
+      product = matrix[i][j]*matrix[i-1][j-1]*matrix[i-2][j-2]*matrix[i-3][j-3];
+      if (max < product) max = product;
+    }
+  }
+
+  return max
+}
+
 
 
 // The following is required to make unit tests work.
