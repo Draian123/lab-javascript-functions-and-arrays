@@ -113,6 +113,19 @@ function avg(arr) {
   if(arr.length ===  0){
     return null;
   }
+  let sum = 0; 
+  arr.forEach(item => {
+    if(typeof item === 'string'){
+      sum += item.length;
+    }else if(typeof item === 'number'){
+      sum += item;
+    }else if(item){
+      sum += 1
+    }
+  })
+  let mixedAverage= sum/arr.length;
+
+  return mixedAverage;
 
 }
 
